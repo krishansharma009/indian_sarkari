@@ -10,6 +10,7 @@ const rateLimiter = require("./middleware/rateLimiter");
 const swagger = require("./config/swagger");
 const swaggerUi = require("swagger-ui-express");
 
+
 const errorHandler = require("./middleware/errorHandler");
 
 // const adminRoutes = require("./routes/admin");
@@ -44,17 +45,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swagger));
 
-// Database sync
-sequelize
-  .sync({ alter: true })
-  .then(() => {
-    console.log("Database synced successfully.");
-    logger.info("Database synced successfully.");
-  })
-  .catch((err) => {
-    console.error("Error syncing database:", err);
-    logger.error("Error syncing database:", err);
-  });
+// // Database sync
+// sequelize
+//   .sync({ alter: true })
+//   .then(() => {
+//     console.log("Database synced successfully.");
+//     logger.info("Database synced successfully.");
+//   })
+//   .catch((err) => {
+//     console.error("Error syncing database:", err);
+//     logger.error("Error syncing database:", err);
+//   });
 
 // Request logging
 app.use((req, res, next) => {
@@ -95,10 +96,33 @@ app.use("/testSeries", testSeriesRouter);
 // Error handling middleware
 app.use(errorHandler);
 
-// Start server
-app.listen(port, () => {
-  logger.info(`Server running on port ${port}`);
-  console.log(`Server is running on http://localhost:${port}`);
-  // Print the Swagger URL in the console
-  console.log(`Swagger Docs available at http://localhost:${port}/api-docs`);
-});
+// // Start server
+// app.listen(port, () => {
+//   logger.info(`Server running on port ${port}`);
+//   console.log(`Server is running on http://localhost:${port}`);
+//   // Print the Swagger URL in the console
+//   console.log(`Swagger Docs available at http://localhost:${port}/api-docs`);
+// });
+
+
+
+// Database sync
+sequelize
+  .sync({ alter: true })
+  .then(() => {
+    console.log("Database synced successfully.");
+    logger.info("Database synced successfully.");
+    // Start server
+    app.listen(port, () => {
+      logger.info(`Server running on port ${port}`);
+      console.log(`Server is running on http://localhost:${port}`);
+      // Print the Swagger URL in the console
+      console.log(
+        `Swagger Docs available at http://localhost:${port}/api-docs`
+      );
+    });
+  })
+  .catch((err) => {
+    console.error("Error syncing database:", err);
+    logger.error("Error syncing database:", err);
+  });

@@ -1,5 +1,6 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
+const logger = require("../middleware/logger");
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -20,6 +21,10 @@ const sequelize = new Sequelize(
     logging: false,
     dialectOptions: {
       timezone: "+05:30",
+    },
+    logging: (msg) => {
+      console.log(msg); // Log every SQL query to the console
+      logger.debug(msg); // Optional: log queries to a file if needed
     },
   }
 );
