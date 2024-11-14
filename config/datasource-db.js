@@ -22,10 +22,10 @@ const sequelize = new Sequelize(
     dialectOptions: {
       timezone: "+05:30",
     },
-    logging: (msg) => {
-      console.log(msg); // Log every SQL query to the console
-      logger.debug(msg); // Optional: log queries to a file if needed
-    },
+    // logging: (msg) => {
+    //   console.log(msg); // Log every SQL query to the console
+    //   logger.debug(msg); // Optional: log queries to a file if needed
+    // },
   }
 );
 

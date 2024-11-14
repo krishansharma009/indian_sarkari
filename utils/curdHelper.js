@@ -9,14 +9,26 @@ const REST_API = {
    * @param {object} query - Query object with pagination, searching, filtering, and sorting options
    * @returns {Promise<object>} - Records data
    */
-  getAll: async (model, query = {}) => {
+  getAll: async (model, query = {}, options = {}) => {
     try {
-      const { page = 1, limit = 10, search, filter, sort } = query;
+      const { page = 1, limit = 10, search, searchExact, filter, sort } = query;
       const offset = (page - 1) * limit;
       const where = {};
       let order = [];
 
-      if (search) {
+      // Handle exact search
+      //in postman kye: searchExact and value: you want to search(data name)
+      if (searchExact) {
+        where[Op.or] = Object.keys(model.rawAttributes)
+          .filter(
+            (attr) => model.rawAttributes[attr].type instanceof DataTypes.STRING
+          )
+          .map((attr) => ({
+            [attr]: searchExact, // Exact match instead of LIKE
+          }));
+      }
+
+      else if (search) {
         where[Op.or] = Object.keys(model.rawAttributes)
           .filter(
             (attr) => model.rawAttributes[attr].type instanceof DataTypes.STRING
@@ -43,6 +55,7 @@ const REST_API = {
         offset: parseInt(offset),
         order,
         paranoid: true,
+        ...options,
       });
 
       logger.info(
@@ -69,11 +82,12 @@ const REST_API = {
    * @param {any} fieldValue - Value to search for
    * @returns {Promise<object>} - Record data
    */
-  getDataListByField: async (model, fieldName, fieldValue) => {
+  getDataListByField: async (model, fieldName, fieldValue, options = {}) => {
     try {
       const result = await model.findAll({
         where: { [fieldName]: fieldValue },
         paranoid: true,
+        ...options, // Include the 'options' parameter here as well
       });
 
       if (result.length === 0) {

@@ -15,10 +15,20 @@ JobSEO.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "Jobs",
+        model: "jobs",
         key: "id",
       },
     },
+
+    // jobSeo_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: "jobseos",
+    //     key: "id",
+    //   },
+    // },
+
     meta_title: DataTypes.STRING(255),
     meta_description: DataTypes.TEXT,
     canonical_url: DataTypes.STRING(255),
@@ -41,6 +51,7 @@ JobSEO.init(
   }
 );
 
-JobSEO.belongsTo(Job, { foreignKey: "job_id" });
+// JobSEO.belongsTo(Job, { foreignKey: "job_id" });
+
 
 module.exports = JobSEO;

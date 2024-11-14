@@ -425,3 +425,34 @@
 2024-10-25 18:43:31 [localhost] error: Error syncing database: Can't create table `rajaji`.`test_series` (errno: 150 "Foreign key constraint is incorrectly formed")
 2024-10-25 18:43:43 [localhost] error: Error syncing database: Can't create table `rajaji`.`test_series` (errno: 150 "Foreign key constraint is incorrectly formed")
 2024-10-25 18:44:40 [localhost] error: Error syncing database: Can't create table `rajaji`.`test_series` (errno: 150 "Foreign key constraint is incorrectly formed")
+2024-11-09 11:20:17 [localhost] error: Error syncing database:
+2024-11-09 11:20:43 [localhost] error: Error syncing database:
+2024-11-09 11:20:45 [localhost] error: Error syncing database:
+2024-11-09 11:24:32 [localhost] error: Error syncing database:
+2024-11-09 11:24:57 [localhost] error: Error syncing database:
+2024-11-09 11:25:24 [localhost] error: Error syncing database:
+2024-11-09 11:28:19 [localhost] error: Error syncing database: Tablespace for table '`rajaji`.`test_series_categories`' exists. Please DISCARD the tablespace before IMPORT
+2024-11-09 11:28:56 [localhost] error: Error syncing database: Tablespace for table '`rajaji`.`test_series_categories`' exists. Please DISCARD the tablespace before IMPORT
+2024-11-09 11:29:19 [localhost] error: Error syncing database: Tablespace for table '`rajaji`.`test_series_categories`' exists. Please DISCARD the tablespace before IMPORT
+2024-11-09 11:29:34 [localhost] error: Error syncing database: Tablespace for table '`rajaji`.`test_series_categories`' exists. Please DISCARD the tablespace before IMPORT
+2024-11-09 11:30:41 [localhost] error: Error syncing database: Tablespace for table '`rajaji`.`test_series_categories`' exists. Please DISCARD the tablespace before IMPORT
+2024-11-09 12:31:25 [localhost] error: Error reading records from job: JobSEO is not associated to job!
+2024-11-09 14:24:42 [localhost] error: Error reading records from job: searchExact is not defined
+2024-11-09 14:25:17 [localhost] error: Error reading records from job: Depertment is associated to job using an alias. You've included an alias (department), but it does not match the alias(es) defined in your association (Depertment).
+2024-11-09 15:48:02 [localhost] error: Error reading records from job: searchExact is not defined
+2024-11-09 16:47:07 [localhost] error: Error reading records from job: Unknown column 'job.0' in 'where clause'
+2024-11-09 16:48:12 [localhost] error: Error reading records from job: Unknown column 'job.name' in 'where clause'
+2024-11-11 18:57:25 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 18:57:57 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 18:58:12 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 18:58:14 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 18:59:29 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:01:26 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:01:46 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:01:55 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:01:58 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:02:01 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-11 19:02:04 [localhost] error: Error syncing database: CONSTRAINT `jobs.content` failed for `rajaji`.`jobs`
+2024-11-12 10:48:01 [localhost] error: Error syncing database:
+2024-11-13 10:13:41 [localhost] error: Error reading job: job with id 1 not found
+2024-11-13 11:03:45 [localhost] error: Error reading job: job with id 1 not found

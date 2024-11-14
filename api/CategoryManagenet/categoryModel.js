@@ -33,7 +33,7 @@ Category.init(
   },
   {
     sequelize,
-    modelName: "category",
+    modelName: "Category",
     tableName: "categories",
     timestamps: false,
     paranoid: true,

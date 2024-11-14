@@ -4,6 +4,7 @@ const Category = require("../../api/CategoryManagenet/categoryModel");
 const State = require("../../api/StateManagement/state");
 const Subcategory = require("../../api/SubcategoryManagement/subcategory");
 const Department = require("../DepartmentManagement/depertment"); // corrected spelling
+const JobSEO = require("../SEOmanagement/JobSeo");
 
 class Job extends Model {}
 Job.init(
@@ -28,6 +29,15 @@ Job.init(
         key: "id",
       },
     },
+
+    jobSeo_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "jobseos",
+        key: "id",
+      },
+    },
+
     state_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -49,13 +59,26 @@ Job.init(
         key: "id",
       },
     },
+    content: {
+      type: DataTypes.TEXT("long"),
+      allowNull: true,
+      set(value) {
+        this.setDataValue(
+          "content",
+          sanitizeHtml(value, {
+            allowedTags: [], // Define your allowed tags like <h1>,<p> etc
+            allowedAttributes: {}, // Define your allowed attributes class,*,
+          })
+        );
+      },
+    },
     admit_card_link: DataTypes.STRING(255),
     answer_key_link: DataTypes.STRING(255),
     result_link: DataTypes.STRING(255),
     slug: {
       type: DataTypes.STRING(255),
       allowNull: false,
-    //   unique: true,
+      //   unique: true,
     },
     meta_title: DataTypes.STRING(255),
     meta_description: DataTypes.TEXT,
@@ -69,15 +92,11 @@ Job.init(
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW,
     },
-    content:{
-      type:DataTypes.TEXT('long'),
-      allowNull: true,
-    },
   },
   {
     sequelize, // specifying the Sequelize instance
     tableName: "jobs",
-    modelName: "Job", // corrected from moduleName to modelName
+    modelName: "job", // corrected from moduleName to modelName
     timestamps: true, // enabled timestamps
     paranoid: true,
     createdAt: "created_at", // specifying custom createdAt field
@@ -86,9 +105,19 @@ Job.init(
 );
 
 // Define associations
-Job.belongsTo(Category, { foreignKey: "category_id" });
-Job.belongsTo(State, { foreignKey: "state_id" });
-Job.belongsTo(Subcategory, { foreignKey: "subcategory_id" });
-Job.belongsTo(Department, { foreignKey: "department_id" });
+Job.belongsTo(Category, { foreignKey: "category_id", onDelete: "SET NULL" });
+Job.belongsTo(State, { foreignKey: "state_id", onDelete: "SET NULL" });
+Job.belongsTo(Subcategory, {
+  foreignKey: "subcategory_id",
+  onDelete: "SET NULL",
+});
+Job.belongsTo(Department, {
+  foreignKey: "department_id",
+  onDelete: "SET NULL",
+});
 
+Job.belongsTo(JobSEO, {
+  foreignKey: "jobSeo_id",
+  onDelete: "SET NULL",
+});
 module.exports = Job;

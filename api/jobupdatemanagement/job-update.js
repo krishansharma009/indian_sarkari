@@ -25,7 +25,7 @@ JobUpdate.init(
     },
     update_link: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
     },
     
     update_date: {
@@ -46,6 +46,8 @@ JobUpdate.init(
   }
 );
 
+// Add the cascade delete behavior
+//Job.hasMany(JobUpdate, { foreignKey: "job_id", onDelete: "CASCADE" });
 JobUpdate.belongsTo(Job, { foreignKey: "job_id" });
 
 module.exports = JobUpdate;

@@ -45,6 +45,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swagger));
 
+
+//trust proxy headers
+app.set("trust proxy", 1);
+
+
+
 // // Database sync
 // sequelize
 //   .sync({ alter: true })
